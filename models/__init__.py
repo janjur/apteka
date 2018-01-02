@@ -1,5 +1,8 @@
-from .Base import Base
-from .Comment import Comment
-from .Post import Post
-from .Role import Role
-from .User import User
+from .Models import (
+    Dostawa,
+    Pracownik,
+    Klient,
+    Platonsc,
+    Zamowienie,
+    Towar,
+    Ilosc)

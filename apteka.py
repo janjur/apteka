@@ -3,7 +3,7 @@ from datetime import datetime
 from flask import Flask, render_template, redirect, flash, url_for, request, g, session
 from flask_sqlalchemy import SQLAlchemy
 
-from models import User, Role, Post, Comment
+from models import *
 from forms import RegisterForm, LoginForm, NewContentForm
 
 app = Flask('Apteka')  # create flask app
