@@ -1,0 +1,6 @@
+#apt-get install python-dev libmysqlclient-dev
+mysqlclient
+pymysql
+flask
+flask-sqlalchemy
+flask-wtf

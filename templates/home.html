@@ -1,0 +1,44 @@
+<html>
+  <head>
+      <!--Jinja if statement-->
+      <!-- If render_template function were given title keyword argument-->
+    {% if title %}
+      <!--add it to title so browser can display it on tab icon-->
+    <title>{{ title }} - multidiary</title>
+    {% else %}
+      <!--otherwise go standard way-->
+    <title>Multidiary</title>
+    {% endif %}
+  </head>
+  <body>
+    <!-- place here url leading to index function defined in flask app -->
+    <h1><a href="{{ url_for('index')}}">Multidiary</a> - internet place where
+        {%if g.user.Login%}
+            {{g.user.Login}}'s
+        {% else %}
+            your
+        {% endif %} dreams eat dirt<br><br></h1>
+    {%if g.user.Login%}
+    <!-- if logged in, give link to log out-->
+    <h2>You should <a href="{{ url_for('logout_handle')}}">log out</a></h2>
+    {% endif %}
+    <!-- invoke get_flashed_messages which returns list of flash messages (xD) and set returned list to messages object for later use-->
+    {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                <ul>
+                    {% for message in messages %}
+                    <!-- iterate over list and for each element list it in html list object xD -->
+                        <li>{{ message[1] }}</li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+    <!-- sidenote: with is keyword for context manager. defined messages object cease existing after endwith statement -->
+    {% endwith %}
+
+    {% block body %}{% endblock %}
+
+  </body>
+</html>
+
+
+
