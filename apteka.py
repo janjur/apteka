@@ -6,7 +6,7 @@ from flask_sqlalchemy import SQLAlchemy
 from models import User, Role, Post, Comment
 from forms import RegisterForm, LoginForm, NewContentForm
 
-app = Flask('wieloblog')  # create flask app
+app = Flask('Apteka')  # create flask app
 app.config.from_object('config')  # quick configuration from file config.py
 db = SQLAlchemy(app)  # connect database with interface provided by sqlalchemy
 

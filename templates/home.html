@@ -4,20 +4,20 @@
       <!-- If render_template function were given title keyword argument-->
     {% if title %}
       <!--add it to title so browser can display it on tab icon-->
-    <title>{{ title }} - multidiary</title>
+    <title>{{ title }} - Apteka</title>
     {% else %}
       <!--otherwise go standard way-->
-    <title>Multidiary</title>
+    <title>Apteka</title>
     {% endif %}
   </head>
   <body>
     <!-- place here url leading to index function defined in flask app -->
-    <h1><a href="{{ url_for('index')}}">Multidiary</a> - internet place where
+    <h1><a href="{{ url_for('index')}}">Apteka</a> - internet place where
         {%if g.user.Login%}
-            {{g.user.Login}}'s
+            {{g.user.Login}}
         {% else %}
-            your
-        {% endif %} dreams eat dirt<br><br></h1>
+            you
+        {% endif %} can buy drugs<br><br></h1>
     {%if g.user.Login%}
     <!-- if logged in, give link to log out-->
     <h2>You should <a href="{{ url_for('logout_handle')}}">log out</a></h2>
