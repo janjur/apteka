@@ -1,4 +1,3 @@
-#apt-get install python-dev libmysqlclient-dev
 mysqlclient
 pymysql
 flask
