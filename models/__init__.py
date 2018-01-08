@@ -2,7 +2,8 @@ from .Models import (
     Dostawa,
     Pracownik,
     Klient,
-    Platonsc,
+    Platnosc,
     Zamowienie,
     Towar,
-    Ilosc)
+    Ilosc,
+    Koszyk)

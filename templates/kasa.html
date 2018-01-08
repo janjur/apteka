@@ -2,15 +2,9 @@
 {% block body %}
 
 
-<h2>Lista dostępnych produktów:</h2>
+Proszę przysłać pieniądze. Łącznie należy się {{ cena }} PLN.
 
-<ul>
-{% for towar in towary %}
-    <li>{{ towar.Nazwa }}, {{ towar.Cena }} PLN, <a href="{{ url_for('add_to_cart', id=towar.idTowar) }}">DODAJ DO KOSZYK</a></li>
-{% endfor %}
-</ul>
-
-{#{%if not g.user.Login%}#}
+    {#{%if not g.user.Login%}#}
 {#    <h2>Login: <form action="{{ url_for('index') }}" method="post">#}
 {#        <span class="input text">{{ form.login.label }} {{ form.login}}</span>#}
 {#        <span class="input text">{{ form.password.label }} {{ form.password }}</span>#}

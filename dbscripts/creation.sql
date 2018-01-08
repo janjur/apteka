@@ -127,6 +127,18 @@ CREATE TABLE IF NOT EXISTS `Apteka`.`Ilosc` (
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = latin1;
 
+-- -----------------------------------------------------
+-- Table `Apteka`.`Towar`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `Apteka`.`Koszyk` (
+  `idTowar` INT(11) NOT NULL AUTO_INCREMENT,
+  `Nazwa` VARCHAR(200) NULL DEFAULT NULL,
+  `Cena` INT(11) NULL DEFAULT NULL,
+  `Ilosc` INT(11) NULL DEFAULT NULL,
+  PRIMARY KEY (`idTowar`))
+ENGINE = InnoDB
+DEFAULT CHARACTER SET = latin1;
+
 
 SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;

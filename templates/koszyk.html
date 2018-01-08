@@ -2,15 +2,22 @@
 {% block body %}
 
 
-<h2>Lista dostępnych produktów:</h2>
+{%  if ilosc %}
+    <h2>Lista produktów w koszyku:</h2>
 
-<ul>
-{% for towar in towary %}
-    <li>{{ towar.Nazwa }}, {{ towar.Cena }} PLN, <a href="{{ url_for('add_to_cart', id=towar.idTowar) }}">DODAJ DO KOSZYK</a></li>
-{% endfor %}
-</ul>
+    <ul>
+    {% for towar in towary %}
+        <li>{{ towar.Nazwa }}, {{ towar.Ilosc }} * {{ towar.Cena }} PLN, {{ towar.cena_laczna }} PLN, <a href="{{ url_for('remove_from_cart', id=towar.idTowar) }}">USUŃ</a></li>
+    {% endfor %}
+    </ul>
+    <a href="{{ url_for('remove_all_from_cart') }}">USUŃ WSZYSTKO</a>
 
-{#{%if not g.user.Login%}#}
+    <h2><a href="{{ url_for('checkout', cena=cena_calkowita) }}">ZAPŁAĆ {{ cena_calkowita }} PLN</a></h2>
+{% else %}
+    <h2>Brak produktów w koszyku.</h2>
+{% endif %}
+
+    {#{%if not g.user.Login%}#}
 {#    <h2>Login: <form action="{{ url_for('index') }}" method="post">#}
 {#        <span class="input text">{{ form.login.label }} {{ form.login}}</span>#}
 {#        <span class="input text">{{ form.password.label }} {{ form.password }}</span>#}

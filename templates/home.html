@@ -12,16 +12,10 @@
   </head>
   <body>
     <!-- place here url leading to index function defined in flask app -->
-    <h1><a href="{{ url_for('index')}}">Apteka</a> - internet place where
-        {%if g.user.Login%}
-            {{g.user.Login}}
-        {% else %}
-            you
-        {% endif %} can buy drugs<br><br></h1>
-    {%if g.user.Login%}
-    <!-- if logged in, give link to log out-->
-    <h2>You should <a href="{{ url_for('logout_handle')}}">log out</a></h2>
-    {% endif %}
+    <h1><a href="{{ url_for('index')}}">Apteka</a> - Miejsce, w którym kupisz leki
+        <div style="float: right"><a href="{{ url_for('koszyk')}}">Koszyk: {{ ilosc }}</a></div>
+        <br><br></h1>
+
     <!-- invoke get_flashed_messages which returns list of flash messages (xD) and set returned list to messages object for later use-->
     {% with messages = get_flashed_messages(with_categories=true) %}
             {% if messages %}

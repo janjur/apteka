@@ -87,3 +87,19 @@ class Ilosc(Base):
 if __name__ == '__main__':
     engine = sqlalchemy.create_engine('mysql+pymysql://root:pw@0.0.0.0:3306/Apteka')
     Base.metadata.create_all(engine)
+
+
+
+
+
+
+
+
+
+
+class Koszyk(Base):
+    __tablename__ = 'Koszyk'
+    idTowar = Column(INTEGER, primary_key=True, nullable=False)
+    Nazwa = Column(VARCHAR(200))
+    Cena = Column(INTEGER)
+    Ilosc = Column(INTEGER)
