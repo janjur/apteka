@@ -6,7 +6,7 @@
 
 <ul>
 {% for towar in towary %}
-    <li>{{ towar.Nazwa }}, {{ towar.Cena }} PLN, <a href="{{ url_for('add_to_cart', id=towar.idTowar) }}">DODAJ DO KOSZYK</a></li>
+    <li>{{ towar.Nazwa }}, {{ towar.Cena }} PLN, <a href="{{ url_for('add_to_cart', id=towar.idTowar) }}">DODAJ do koszyka</a></li>
 {% endfor %}
 </ul>
 

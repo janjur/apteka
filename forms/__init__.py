@@ -1,16 +1,10 @@
 from flask_wtf import Form
-from wtforms import StringField
+from wtforms import TextAreaField, SubmitField, StringField
 
 
-class NewContentForm(Form): # Forms for submitting data
-    content = StringField('content')
-
-
-class LoginForm(Form):
-    login = StringField('Login')
-    password = StringField('Password')
-
-
-class RegisterForm(Form):
-    newlogin = StringField('Login')
-    newpassword = StringField('Password')
+class ContactForm(Form):
+    name = StringField("Imię")
+    email = StringField("Email")
+    subject = StringField("Temat")
+    message = TextAreaField("Wiadomość")
+    submit = SubmitField("Wyślij")

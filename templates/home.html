@@ -9,27 +9,31 @@
       <!--otherwise go standard way-->
     <title>Apteka</title>
     {% endif %}
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
   </head>
   <body>
-    <!-- place here url leading to index function defined in flask app -->
     <h1><a href="{{ url_for('index')}}">Apteka</a> - Miejsce, w którym kupisz leki
-        <div style="float: right"><a href="{{ url_for('koszyk')}}">Koszyk: {{ ilosc }}</a></div>
+        <div style="float: right">
+             <a href="{{ url_for('contact')}}">Kontakt</a>
+            |
+            <a href="{{ url_for('koszyk')}}">Koszyk: {{ ilosc }}</a>
+        </div>
         <br><br></h1>
 
-    <!-- invoke get_flashed_messages which returns list of flash messages (xD) and set returned list to messages object for later use-->
     {% with messages = get_flashed_messages(with_categories=true) %}
             {% if messages %}
                 <ul>
                     {% for message in messages %}
-                    <!-- iterate over list and for each element list it in html list object xD -->
                         <li>{{ message[1] }}</li>
                     {% endfor %}
                 </ul>
             {% endif %}
-    <!-- sidenote: with is keyword for context manager. defined messages object cease existing after endwith statement -->
     {% endwith %}
 
-    {% block body %}{% endblock %}
+     <div class="container">
+      {% block body %}
+      {% endblock %}
+    </div>
 
   </body>
 </html>

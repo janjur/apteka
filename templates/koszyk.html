@@ -10,9 +10,9 @@
         <li>{{ towar.Nazwa }}, {{ towar.Ilosc }} * {{ towar.Cena }} PLN, {{ towar.cena_laczna }} PLN, <a href="{{ url_for('remove_from_cart', id=towar.idTowar) }}">USUŃ</a></li>
     {% endfor %}
     </ul>
-    <a href="{{ url_for('remove_all_from_cart') }}">USUŃ WSZYSTKO</a>
+    <a href="{{ url_for('remove_all_from_cart') }}">USUŃ wszystko</a>
 
-    <h2><a href="{{ url_for('checkout') }}">ZAPŁAĆ {{ cena_calkowita }} PLN</a></h2>
+    <h2><a href="{{ url_for('checkout') }}">Zapłać {{ cena_calkowita }} PLN</a></h2>
 {% else %}
     <h2>Brak produktów w koszyku.</h2>
 {% endif %}
