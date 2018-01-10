@@ -1,4 +1,4 @@
-{% extends "home.html" %}
+{% extends "top_bar.html" %}
 {% block body %}
 
 
@@ -7,7 +7,10 @@
 
     <ul>
     {% for towar in towary %}
-        <li>{{ towar.Nazwa }}, {{ towar.Ilosc }} * {{ towar.Cena }} PLN, {{ towar.cena_laczna }} PLN, <a href="{{ url_for('remove_from_cart', id=towar.idTowar) }}">USUŃ</a></li>
+        <li><span style="float: left; width: 300px;">{{ towar.Nazwa }}</span>
+            <span style="float: left; width: 300px;">{{ towar.Ilosc }} * {{ towar.Cena }} PLN</span>
+            <span style="float: left; width: 300px;">{{ towar.cena_laczna }} PLN</span>
+            <a href="{{ url_for('remove_from_cart', id=towar.idTowar) }}">USUŃ</a></li>
     {% endfor %}
     </ul>
     <a href="{{ url_for('remove_all_from_cart') }}">USUŃ wszystko</a>

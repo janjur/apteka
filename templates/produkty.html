@@ -1,0 +1,15 @@
+{% extends "top_bar.html" %}
+{% block body %}
+
+
+<h2>Lista dostępnych produktów:</h2>
+
+<ul>
+{% for towar in towary %}
+    <li><span style="float: left; width: 300px;">{{ towar.Nazwa }}</span>
+        <span style="float: left; width: 300px;">{{ towar.Cena }} PLN</span>
+        <a href="{{ url_for('add_to_cart', id=towar.idTowar) }}">DODAJ do koszyka</a></li>
+{% endfor %}
+</ul>
+
+{% endblock %}

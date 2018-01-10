@@ -15,7 +15,7 @@ db = SQLAlchemy(app)  # connect database with interface provided by sqlalchemy
 def index():
     towary = db.session.query(Towar).order_by(Towar.idTowar).all()
     ilosc = sum(koszyczek.values())
-    return render_template('main.html', towary=towary, ilosc=ilosc)
+    return render_template('produkty.html', towary=towary, ilosc=ilosc)
 
 
 @app.route('/add/<int:id>')
@@ -99,7 +99,7 @@ def contact():
             f.write(f'{form.name.data} o adresie {form.email.data} pisze: "{form.message.data}"\n\n')
         return redirect('index')
 
-    return render_template('contact.html', form=form, ilosc=ilosc)
+    return render_template('kontakt.html', form=form, ilosc=ilosc)
 
 
 koszyczek = {}
