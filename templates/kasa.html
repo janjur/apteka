@@ -1,41 +1,33 @@
 {% extends "home.html" %}
 {% block body %}
 
+<h3>Proszę przysłać pieniądze. Łącznie należy się {{ cena }} PLN.</h3>
 
-Proszę przysłać pieniądze. Łącznie należy się {{ cena }} PLN.
+<form action="{{ url_for('checkout') }}" method=post>
+{{ form.hidden_tag() }}
+<h2>Sposób zapłaty:</h2>
 
-    {#{%if not g.user.Login%}#}
-{#    <h2>Login: <form action="{{ url_for('index') }}" method="post">#}
-{#        <span class="input text">{{ form.login.label }} {{ form.login}}</span>#}
-{#        <span class="input text">{{ form.password.label }} {{ form.password }}</span>#}
-{#        <span class="input submit"><input type="Submit" value="Login" /></span>#}
-{#    </form></h2>#}
-{#    <h2> Register: <form action="{{ url_for('index') }}" method="post">#}
-{#        <span class="input text">{{ form3.newlogin.label }} {{ form3.newlogin}}</span>#}
-{#        <span class="input text">{{ form3.newpassword.label }} {{ form3.newpassword }}</span>#}
-{#        <span class="input submit"><input type="Submit" value="Register" /></span>#}
-{#    </form></h2>#}
-{#{% endif %}#}
-{##}
-{#{% for post in posts %}#}
-{#<div>#}
-{#    <br>#}
-{#    <a href="{{ url_for('user',Login=post.author.Login) }}">{{post.author.Login}}</a> at {{post.CreationDate}}: <a href="{{ url_for('post',idPost=post.idPosts) }}">{{post.brief_content}}</a>#}
-{#    <br>#}
-{#</div>#}
-{#{% endfor %}#}
-{##}
-{#{%if g.user.Login%}#}
-{#    <br><br><br>#}
-{#    <form action="{{ url_for('index') }}" method="post">#}
-{#        <div class="input text">#}
-{#            {{ form2.content.label }} {{ form2.content }}#}
-{#        </div>#}
-{#        <div class="input submit">#}
-{#            <input type="Submit" value="Send" />#}
-{#        </div>#}
-{#    </form>#}
-{#{% endif %}#}
+    {% for subfield in form.zaplata %}
+    <p>{{ subfield }} {{ subfield.label }}</p>
+    {% endfor %}
+
+
+<h2>Adres dostawy:</h2>
+
+{{ form.surname.label }}
+{{ form.surname }}
+
+{{ form.address.label }}
+{{ form.address }}
+
+{{ form.city.label }}
+{{ form.city }}
+
+{{ form.country.label }}
+{{ form.country }}
+
+<p>{{ form.submit }}</p>
+</form>
 
 
 {% endblock %}

@@ -1,7 +1,7 @@
 from flask import Flask, render_template, redirect, flash, url_for, request
 from flask_sqlalchemy import SQLAlchemy
 
-from forms import ContactForm
+from forms import ContactForm, AddressForm
 from models import *
 
 app = Flask('Apteka')  # create flask app
@@ -67,14 +67,25 @@ def remove_all_from_cart():
     return redirect('index')
 
 
-@app.route('/checkout')
+@app.route('/checkout', methods=['GET', 'POST'])
 def checkout():
+    global koszyczek
     cena = sum([koszyczek[towar.idTowar] * towar.Cena  # sążnie
                  for towar
                  in db.session.query(Towar).order_by(Towar.idTowar).all()
                  if towar.idTowar in koszyczek])
     ilosc = sum(koszyczek.values())
-    return render_template('kasa.html', cena=cena, ilosc=ilosc)
+    form = AddressForm()
+
+    if request.method == 'POST':
+        flash('Zamówienie zrealizowane.')
+        with open('PAYMENTS', 'a') as f:
+            f.write(f'Wybrano opcję zapłaty {form.zaplata.data}. Odbiorca: {form.surname.data}. '
+                    f'Adres: {form.address.data}, {form.city.data}, {form.country.data}. \n\n')
+        koszyczek = {}
+        return redirect('index')
+
+    return render_template('kasa.html', cena=cena, ilosc=ilosc, form=form)
 
 
 @app.route('/contact', methods=['GET', 'POST'])
@@ -87,13 +98,9 @@ def contact():
         with open('MESSAGES', 'a') as f:
             f.write(f'{form.name.data} o adresie {form.email.data} pisze: "{form.message.data}"\n\n')
         return redirect('index')
-    elif request.method == 'GET':
-        return render_template('contact.html', form=form, ilosc=ilosc)
+
+    return render_template('contact.html', form=form, ilosc=ilosc)
+
 
 koszyczek = {}
 app.run(host='localhost', port=8080, debug=True)
-
-# TODO: Unify language to English
-# TODO: Add payment/delivery page (radio buttons?)
-# TODO: README with install refurb
-# TODO: Docker compose

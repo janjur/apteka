@@ -1,7 +1,7 @@
 {% extends "home.html" %}
  
 {% block body %}
-  <h2>Contact</h2>
+  <h2>Zostaw wiadomość:</h2>
   <form action="{{ url_for('contact') }}" method=post>
     {{ form.hidden_tag() }}
  
@@ -13,9 +13,10 @@
  
     {{ form.subject.label }}
     {{ form.subject }}
- 
+
+      <p>
     {{ form.message.label }}
-    {{ form.message }}
+    </p>{{ form.message }}
  
     {{ form.submit }}
   </form>

@@ -25,3 +25,7 @@ apt-get install python3-dev libmysqlclient-dev
 cd ~/apteka
 python3 apteka.py
 ```
+
+## Access application
+
+### Connect to dashboard via browser at localhost:8080
