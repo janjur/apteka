@@ -25,7 +25,7 @@ docker run --name apteka-mysql -e MYSQL_ROOT_PASSWORD=pw -d -p 3306:3306 -v ~/ap
 ```
 * Connect to db at localhost:3306. 
 * Create and populate tables using provided scripts in `~/apteka/scripts`
-** You may use `MySQL workbench` or `Pycharm Professional` built-in `Databse` tool.
+* You may use `MySQL workbench` or `Pycharm Professional` built-in `Databse` tool.
 
 ## Running Flask server
 
