@@ -20,7 +20,7 @@ sudo pip3 install -r requirements
 * [Install Docker](https://docs.docker.com/engine/installation/linux/docker-ce/ubuntu/)
 ```
 mkdir ~/apteka.data
-docker run --name apteka-mysql -e MYSQL_ROOT_PASSWORD=pw -d -p 3306:3306 -v ~/apteka/.data:/var/lib/mysql mysql  #still su?
+sudo docker run --name apteka-mysql -e MYSQL_ROOT_PASSWORD=pw -d -p 3306:3306 -v ~/apteka/.data:/var/lib/mysql mysql
 ```
 * Run `MySQL workbench` or `Pycharm Professional` built-in `Databse` tool
 * Connect to db at localhost:3306 
